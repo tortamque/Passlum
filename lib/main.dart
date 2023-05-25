@@ -28,6 +28,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String _password = "password";
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -53,10 +55,64 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               flex: 3,
-              child: Container(
-                height: 200,
-                color: Colors.blue[800],
-              ),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 10,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: screenWidth/30
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 5,
+                              child: Text(
+                                _password,
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: IconButton(
+                                onPressed: (){}, 
+                                icon: Image.asset("assets/icons/Copy.png")
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: IconButton(
+                                onPressed: (){}, 
+                                icon: Image.asset("assets/icons/Reload.png")
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Card(
+                        margin: EdgeInsets.all(0),
+                        color: Colors.red,
+                        child: SizedBox(
+                          width: double.infinity,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              )
             ),
             Expanded(
               flex: 1,
