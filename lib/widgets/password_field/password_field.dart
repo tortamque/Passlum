@@ -38,22 +38,16 @@ class _PasswordFieldState extends State<PasswordField> {
                 child: Row(
                   children: [
                     PasswordText(
-                      flex: 5,
+                      flex: 1,
                       text: widget.password,
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                        onPressed: (){}, 
-                        icon: Image.asset("assets/icons/Copy.png")
-                      ),
+                    IconButton(
+                      onPressed: (){}, 
+                      icon: Image.asset("assets/icons/Copy.png")
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                        onPressed: (){}, 
-                        icon: Image.asset("assets/icons/Reload.png")
-                      ),
+                    IconButton(
+                      onPressed: (){}, 
+                      icon: Image.asset("assets/icons/Reload.png")
                     ),
                   ],
                 ),
