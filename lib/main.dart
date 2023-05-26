@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                               "Password lenght",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 16
+                                fontSize: 17
                               ),
                             ),
                             Row(
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Center(child: Text(
                                       _passwordLenght.toString(), 
                                       style: const TextStyle(
-                                        fontSize: 14
+                                        fontSize: 16
                                       ),
                                     )),
                                   ),
@@ -127,13 +127,18 @@ class _HomePageState extends State<HomePage> {
                                 Expanded(
                                   child: SliderTheme(
                                     data: SliderTheme.of(context).copyWith(
+                                      showValueIndicator: ShowValueIndicator.never,
+                                      thumbColor: CustomColors.darkBlue,
+                                      activeTrackColor: CustomColors.lightBlue,
+                                      trackHeight: 9,
+                                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15),
                                       tickMarkShape: SliderTickMarkShape.noTickMark, 
                                     ),
                                     child: Slider(
                                       value: _passwordLenght.toDouble(), 
-                                      min: 4,
+                                      min: 6,
                                       max: 20,
-                                      divisions: 16,
+                                      divisions: 14,
                                       label: _passwordLenght.round().toString(),
                                       onChanged: (double newValue){
                                         setState(() {
