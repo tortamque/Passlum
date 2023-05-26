@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passlum/theme/constants.dart';
 import 'package:passlum/widgets/fillers/filler.dart';
 import 'package:passlum/widgets/password_field/password_field.dart';
 
@@ -32,6 +33,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String _password = "password";
+  int _passwordLenght = 12;
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +62,74 @@ class _HomePageState extends State<HomePage> {
 
             Expanded(
               flex: 12,
-              child: Container(
-                height: 200,
-                color: Colors.red[800],
-              ),
+              child: Card(
+                elevation: 10,
+                surfaceTintColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  children: [            
+                    const Text(
+                      "Customize your password",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26
+                      ),
+                    ),
+
+                  Filler(flex: 1),
+
+                  Expanded(
+                    flex: 7,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Password lenght",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  color: Colors.red,
+                                  width: 50,
+                                  height: 50,
+                                ),
+                                Expanded(
+                                  child: SliderTheme(
+                                    data: SliderTheme.of(context).copyWith(
+                                      tickMarkShape: SliderTickMarkShape.noTickMark, 
+                                    ),
+                                    child: Slider(
+                                      value: _passwordLenght.toDouble(), 
+                                      min: 4,
+                                      max: 20,
+                                      divisions: 16,
+                                      label: _passwordLenght.round().toString(),
+                                      onChanged: (double newValue){
+                                        setState(() {
+                                          _passwordLenght = newValue.toInt();
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+              )
             ),
 
             const Filler(flex: 1),
