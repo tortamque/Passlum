@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passlum/enums/password_type.dart';
 import 'package:passlum/theme/constants.dart';
 import 'package:passlum/widgets/fillers/filler.dart';
 import 'package:passlum/widgets/password_field/password_field.dart';
@@ -34,6 +35,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String _password = "password";
   int _passwordLenght = 12;
+  PasswordType type = PasswordType.allCharacters;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: CustomColors.lightBlue,
         title: Text(widget.title),
       ),
       body: Padding(
@@ -81,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   Filler(flex: 1),
 
                   Expanded(
-                    flex: 7,
+                    flex: 3,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Column(
@@ -149,14 +151,67 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 )
                               ],
-                            )
+                            ),
                           ],
                         ),
                       ),
                     ),
+
+                    Filler(flex: 1),
+
+                    Expanded(
+                      flex: 9,
+                      child: Row(
+                        
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              children: [
+                                RadioListTile(
+                                  title: const Text("Easy to say"),
+                                  activeColor: CustomColors.darkBlue,
+                                  value: PasswordType.easyToSay, 
+                                  groupValue: type, 
+                                  onChanged: (PasswordType? newValue){setState(() {
+                                    type = newValue!;
+                                  });}
+                                ),
+                                RadioListTile(
+                                  title: const Text("Easy to read"),
+                                  activeColor: CustomColors.darkBlue,
+                                  value: PasswordType.easyToRead, 
+                                  groupValue: type, 
+                                  onChanged: (PasswordType? newValue){setState(() {
+                                    type = newValue!;
+                                  });}
+                                ),
+                                RadioListTile(
+                                  title: const Text("All characters"),
+                                  activeColor: CustomColors.darkBlue,
+                                  value: PasswordType.allCharacters, 
+                                  groupValue: type, 
+                                  onChanged: (PasswordType? newValue){setState(() {
+                                    type = newValue!;
+                                  });}
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Expanded(
+                            flex: 1,
+                            child: Column(
+                              children: [
+                                Text("Placeholder")
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
-
               )
             ),
 
