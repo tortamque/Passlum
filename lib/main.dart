@@ -36,6 +36,10 @@ class _HomePageState extends State<HomePage> {
   String _password = "password";
   int _passwordLenght = 12;
   PasswordType type = PasswordType.allCharacters;
+  bool isUppercase = true;
+  bool isLowercase = true;
+  bool isNumeric = false;
+  bool isSymbolic = false;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +67,7 @@ class _HomePageState extends State<HomePage> {
             const Filler(flex: 1),
 
             Expanded(
-              flex: 12,
+              flex: 15,
               child: Card(
                 elevation: 10,
                 surfaceTintColor: Colors.white,
@@ -165,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                         
                         children: [
                           Expanded(
-                            flex: 2,
+                            flex: 1,
                             child: Column(
                               children: [
                                 RadioListTile(
@@ -203,7 +207,54 @@ class _HomePageState extends State<HomePage> {
                             flex: 1,
                             child: Column(
                               children: [
-                                Text("Placeholder")
+                                CheckboxListTile(
+                                  title: const Text("Uppercase"),
+                                  controlAffinity: ListTileControlAffinity.leading,
+                                  value: isUppercase, 
+                                  activeColor: CustomColors.darkBlue,
+                                  checkColor: Colors.white,
+                                  onChanged: (bool? newValue){
+                                    setState(() {
+                                      isUppercase = newValue!;
+                                    });
+                                  }
+                                ),
+                                CheckboxListTile(
+                                  title: const Text("Lowercase"),
+                                  controlAffinity: ListTileControlAffinity.leading,
+                                  value: isLowercase, 
+                                  activeColor: CustomColors.darkBlue,
+                                  checkColor: Colors.white,
+                                  onChanged: (bool? newValue){
+                                    setState(() {
+                                      isLowercase = newValue!;
+                                    });
+                                  }
+                                ),
+                                CheckboxListTile(
+                                  title: const Text("Numbers"),
+                                  controlAffinity: ListTileControlAffinity.leading,
+                                  value: isNumeric, 
+                                  activeColor: CustomColors.darkBlue,
+                                  checkColor: Colors.white,
+                                  onChanged: (bool? newValue){
+                                    setState(() {
+                                      isNumeric = newValue!;
+                                    });
+                                  }
+                                ),
+                                CheckboxListTile(
+                                  title: const Text("Symbols"),
+                                  controlAffinity: ListTileControlAffinity.leading,
+                                  value: isSymbolic, 
+                                  activeColor: CustomColors.darkBlue,
+                                  checkColor: Colors.white,
+                                  onChanged: (bool? newValue){
+                                    setState(() {
+                                      isSymbolic = newValue!;
+                                    });
+                                  }
+                                ),
                               ],
                             ),
                           )
@@ -219,7 +270,7 @@ class _HomePageState extends State<HomePage> {
 
             TextButton(
               onPressed: (){},
-              child: Text("Copy password"),
+              child: const Text("Copy password"),
             ),
             
             const Filler(flex: 1),
