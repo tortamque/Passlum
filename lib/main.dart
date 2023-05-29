@@ -172,32 +172,53 @@ class _HomePageState extends State<HomePage> {
                             flex: 1,
                             child: Column(
                               children: [
-                                RadioListTile(
-                                  title: const Text("Easy to say"),
-                                  activeColor: CustomColors.darkBlue,
-                                  value: PasswordType.easyToSay, 
-                                  groupValue: type, 
-                                  onChanged: (PasswordType? newValue){setState(() {
-                                    type = newValue!;
-                                  });}
+                                Theme(
+                                  data: Theme.of(context).copyWith(
+                                    listTileTheme: ListTileThemeData(
+                                      horizontalTitleGap: 0,
+                                    ),
+                                  ),
+                                  child: RadioListTile(
+                                    title: const Text("Easy to say"),
+                                    activeColor: CustomColors.darkBlue,
+                                    value: PasswordType.easyToSay, 
+                                    groupValue: type, 
+                                    onChanged: (PasswordType? newValue){setState(() {
+                                      type = newValue!;
+                                    });}
+                                  ),
                                 ),
-                                RadioListTile(
-                                  title: const Text("Easy to read"),
-                                  activeColor: CustomColors.darkBlue,
-                                  value: PasswordType.easyToRead, 
-                                  groupValue: type, 
-                                  onChanged: (PasswordType? newValue){setState(() {
-                                    type = newValue!;
-                                  });}
+                                Theme(
+                                  data: Theme.of(context).copyWith(
+                                    listTileTheme: ListTileThemeData(
+                                      horizontalTitleGap: 0,
+                                    ),
+                                  ),
+                                  child: RadioListTile(
+                                    title: const Text("Easy to read"),
+                                    activeColor: CustomColors.darkBlue,
+                                    value: PasswordType.easyToRead, 
+                                    groupValue: type, 
+                                    onChanged: (PasswordType? newValue){setState(() {
+                                      type = newValue!;
+                                    });}
+                                  ),
                                 ),
-                                RadioListTile(
-                                  title: const Text("All characters"),
-                                  activeColor: CustomColors.darkBlue,
-                                  value: PasswordType.allCharacters, 
-                                  groupValue: type, 
-                                  onChanged: (PasswordType? newValue){setState(() {
-                                    type = newValue!;
-                                  });}
+                                Theme(
+                                  data: Theme.of(context).copyWith(
+                                    listTileTheme: ListTileThemeData(
+                                      horizontalTitleGap: 0,
+                                    ),
+                                  ),
+                                  child: RadioListTile(
+                                    title: const Text("All characters"),
+                                    activeColor: CustomColors.darkBlue,
+                                    value: PasswordType.allCharacters, 
+                                    groupValue: type, 
+                                    onChanged: (PasswordType? newValue){setState(() {
+                                      type = newValue!;
+                                    });}
+                                  ),
                                 ),
                               ],
                             ),
@@ -208,6 +229,7 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               children: [
                                 CheckboxListTile(
+                                  contentPadding: EdgeInsets.zero,
                                   title: const Text("Uppercase"),
                                   controlAffinity: ListTileControlAffinity.leading,
                                   value: isUppercase, 
@@ -217,9 +239,10 @@ class _HomePageState extends State<HomePage> {
                                     setState(() {
                                       isUppercase = newValue!;
                                     });
-                                  }
+                                  },
                                 ),
                                 CheckboxListTile(
+                                  contentPadding: EdgeInsets.zero,
                                   title: const Text("Lowercase"),
                                   controlAffinity: ListTileControlAffinity.leading,
                                   value: isLowercase, 
@@ -232,6 +255,7 @@ class _HomePageState extends State<HomePage> {
                                   }
                                 ),
                                 CheckboxListTile(
+                                  contentPadding: EdgeInsets.zero,
                                   title: const Text("Numbers"),
                                   controlAffinity: ListTileControlAffinity.leading,
                                   value: isNumeric, 
@@ -244,6 +268,7 @@ class _HomePageState extends State<HomePage> {
                                   }
                                 ),
                                 CheckboxListTile(
+                                  contentPadding: EdgeInsets.zero,
                                   title: const Text("Symbols"),
                                   controlAffinity: ListTileControlAffinity.leading,
                                   value: isSymbolic, 
@@ -253,7 +278,8 @@ class _HomePageState extends State<HomePage> {
                                     setState(() {
                                       isSymbolic = newValue!;
                                     });
-                                  }
+                                  },
+                                           
                                 ),
                               ],
                             ),
