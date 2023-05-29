@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:passlum/models/password_generator.dart';
 import 'package:passlum/models/password_lenght.dart';
 import 'package:passlum/theme/constants.dart';
 
