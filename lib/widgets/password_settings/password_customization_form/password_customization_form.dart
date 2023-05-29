@@ -11,11 +11,16 @@ class PasswordCustomizationForm extends StatefulWidget {
 class _PasswordCustomizationFormState extends State<PasswordCustomizationForm> {
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       flex: 9,
       child: Row(
         children: [
-          LeftMenu(),
+          LeftMenu(
+            onTypeChanged: (){
+              setState(() {
+              });
+            },
+          ),
 
           RightMenu()
         ],

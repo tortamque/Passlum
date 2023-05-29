@@ -21,7 +21,13 @@ class PasswordGenerator {
     String password = "";
     String allowedCharacters = "";
     
-    //TODO: implement EasyToSay password generating :D
+    if(PasswordSettings().isUppercase) allowedCharacters += _capitalLetters;
+    if(PasswordSettings().isLowercase) allowedCharacters += _smallLetters;
+
+    for (var i = 0; i < lenght; i++) {
+      password += allowedCharacters[Random().nextInt(allowedCharacters.length - 1)];
+    }
+
     return password;
   }
 

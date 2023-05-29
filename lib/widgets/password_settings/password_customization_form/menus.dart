@@ -6,7 +6,10 @@ import 'package:passlum/widgets/password_settings/password_customization_form/ra
 
 // ignore: must_be_immutable
 class LeftMenu extends StatefulWidget {
+  final Function() onTypeChanged;
+
   const LeftMenu({
+    required this.onTypeChanged,
     super.key
   });
 
@@ -27,6 +30,13 @@ class _LeftMenuState extends State<LeftMenu> {
             onChanged: (PasswordType? newValue){
               setState(() {
                 PasswordSettings().type = newValue!;
+
+                PasswordSettings().isNumeric = false;
+                PasswordSettings().isSymbolic = false;
+                PasswordSettings().isUppercase = true;
+                PasswordSettings().isLowercase = true;
+
+                widget.onTypeChanged();
               });}, 
             value: PasswordType.easyToSay
           ),
@@ -37,6 +47,8 @@ class _LeftMenuState extends State<LeftMenu> {
             onChanged: (PasswordType? newValue){
               setState(() {
                 PasswordSettings().type = newValue!;
+
+                widget.onTypeChanged();
               });}, 
             value: PasswordType.easyToRead
           ),
@@ -47,6 +59,8 @@ class _LeftMenuState extends State<LeftMenu> {
             onChanged: (PasswordType? newValue){
               setState(() {
                 PasswordSettings().type = newValue!;
+
+                widget.onTypeChanged();
               });},
             value: PasswordType.allCharacters
           ),
@@ -92,6 +106,7 @@ class _RightMenuState extends State<RightMenu> {
                 checkValues(newValue!) ? PasswordSettings().isUppercase = newValue : null;
               });
             },
+            isEnabled: true,
           ),
           CheckBox(
             title: "Lowercase", 
@@ -100,7 +115,8 @@ class _RightMenuState extends State<RightMenu> {
               setState(() {
                 checkValues(newValue!) ? PasswordSettings().isLowercase = newValue : null;
               });
-            }
+            },
+            isEnabled: true,
           ),
           CheckBox(
             title: "Numbers", 
@@ -109,7 +125,8 @@ class _RightMenuState extends State<RightMenu> {
               setState(() {
                 PasswordSettings().type == PasswordType.easyToSay ? null : (checkValues(newValue!) ? PasswordSettings().isNumeric = newValue : null);
               });
-            }
+            },
+            isEnabled: PasswordSettings().type == PasswordType.easyToSay ? false : true,
           ),
           CheckBox(
             title: "Symbols", 
@@ -118,7 +135,8 @@ class _RightMenuState extends State<RightMenu> {
               setState(() {
                 PasswordSettings().type == PasswordType.easyToSay ? null : (checkValues(newValue!) ? PasswordSettings().isSymbolic = newValue : null);
               });
-            }
+            },
+            isEnabled: PasswordSettings().type == PasswordType.easyToSay ? false : true,
           ),
         ],
       ),
