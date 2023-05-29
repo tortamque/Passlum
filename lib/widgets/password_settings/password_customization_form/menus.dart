@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:passlum/enums/password_type.dart';
+import 'package:passlum/models/password_settings.dart';
 import 'package:passlum/widgets/password_settings/password_customization_form/check_box.dart';
 import 'package:passlum/widgets/password_settings/password_customization_form/radio_button.dart';
 
 // ignore: must_be_immutable
 class LeftMenu extends StatefulWidget {
-  PasswordType type;
-
-  LeftMenu({
-    required this.type,
+  const LeftMenu({
     super.key
   });
 
@@ -24,31 +22,31 @@ class _LeftMenuState extends State<LeftMenu> {
       child: Column(
         children: [
           RadioButton(
-            type: widget.type, 
+            type: PasswordSettings().type, 
             title: "Easy to say", 
             onChanged: (PasswordType? newValue){
               setState(() {
-                widget.type = newValue!;
+                PasswordSettings().type = newValue!;
               });}, 
             value: PasswordType.easyToSay
           ),
 
           RadioButton(
-            type: widget.type, 
+            type: PasswordSettings().type, 
             title: "Easy to read", 
             onChanged: (PasswordType? newValue){
               setState(() {
-                widget.type = newValue!;
+                PasswordSettings().type = newValue!;
               });}, 
             value: PasswordType.easyToRead
           ),
           
           RadioButton(
-            type: widget.type, 
+            type: PasswordSettings().type, 
             title: "All characters", 
             onChanged: (PasswordType? newValue){
               setState(() {
-                widget.type = newValue!;
+                PasswordSettings().type = newValue!;
               });},
             value: PasswordType.allCharacters
           ),
@@ -60,16 +58,7 @@ class _LeftMenuState extends State<LeftMenu> {
 
 // ignore: must_be_immutable
 class RightMenu extends StatefulWidget {
-  bool isUppercase;
-  bool isLowercase;
-  bool isNumeric;
-  bool isSymbolic;
-
-  RightMenu({
-    required this.isUppercase,
-    required this.isLowercase,
-    required this.isNumeric,
-    required this.isSymbolic,
+  const RightMenu({
     super.key
   });
 
@@ -81,10 +70,10 @@ class _RightMenuState extends State<RightMenu> {
   bool checkValues(bool newValue){
     int falseCount = !newValue ? 1 : 0;
 
-    if (!widget.isUppercase) falseCount++;
-    if (!widget.isLowercase) falseCount++;
-    if (!widget.isNumeric)   falseCount++;
-    if (!widget.isSymbolic)  falseCount++;
+    if (!PasswordSettings().isUppercase) falseCount++;
+    if (!PasswordSettings().isLowercase) falseCount++;
+    if (!PasswordSettings().isNumeric)   falseCount++;
+    if (!PasswordSettings().isSymbolic)  falseCount++;
 
     return falseCount < 4;
   }
@@ -97,37 +86,37 @@ class _RightMenuState extends State<RightMenu> {
         children: [
           CheckBox(
             title: "Uppercase", 
-            value: widget.isUppercase, 
+            value: PasswordSettings().isUppercase, 
             onChanged: (bool? newValue){
               setState(() {
-                checkValues(newValue!) ? widget.isUppercase = newValue : null;
+                checkValues(newValue!) ? PasswordSettings().isUppercase = newValue : null;
               });
-            }
+            },
           ),
           CheckBox(
             title: "Lowercase", 
-            value: widget.isLowercase, 
+            value: PasswordSettings().isLowercase, 
             onChanged: (bool? newValue){
               setState(() {
-                checkValues(newValue!) ? widget.isLowercase = newValue : null;
+                checkValues(newValue!) ? PasswordSettings().isLowercase = newValue : null;
               });
             }
           ),
           CheckBox(
             title: "Numbers", 
-            value: widget.isNumeric, 
+            value: PasswordSettings().isNumeric, 
             onChanged: (bool? newValue){
               setState(() {
-                checkValues(newValue!) ? widget.isNumeric = newValue : null;
+                PasswordSettings().type == PasswordType.easyToSay ? null : (checkValues(newValue!) ? PasswordSettings().isNumeric = newValue : null);
               });
             }
           ),
           CheckBox(
             title: "Symbols", 
-            value: widget.isSymbolic, 
+            value: PasswordSettings().isSymbolic, 
             onChanged: (bool? newValue){
               setState(() {
-                checkValues(newValue!) ? widget.isSymbolic = newValue : null;
+                PasswordSettings().type == PasswordType.easyToSay ? null : (checkValues(newValue!) ? PasswordSettings().isSymbolic = newValue : null);
               });
             }
           ),

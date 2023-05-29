@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passlum/models/password_generator.dart';
 import 'package:passlum/models/password_lenght.dart';
 import 'package:passlum/theme/constants.dart';
 
@@ -36,6 +37,7 @@ class _PasswordLenghtSliderState extends State<PasswordLenghtSlider> {
           onChanged: (double newValue){
             setState(() {
               PasswordLength().passwordLength = newValue.toInt();
+              print(PasswordGenerator().generate(PasswordLength().passwordLength));
             });
             widget.onSliderChanged();
           },
