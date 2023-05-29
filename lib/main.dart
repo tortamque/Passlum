@@ -63,10 +63,25 @@ class _HomePageState extends State<HomePage> {
 
             const Filler(flex: 1),
 
-            TextButton(
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                foregroundColor: CustomColors.darkBlue,
+                backgroundColor: CustomColors.lightBlue,
+                minimumSize: const Size.fromHeight(50),
+                surfaceTintColor: Colors.white,
+                elevation: 10,
+              ),
               onPressed: (){},
-              child: const Text("Copy password"),
+              child: const Text(
+                "Copy password", 
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 21
+                ),
+              ),
             ),
+            
             
             const Filler(flex: 1),
           ]
