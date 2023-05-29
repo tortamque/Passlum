@@ -37,7 +37,6 @@ class _PasswordLenghtSliderState extends State<PasswordLenghtSlider> {
           onChanged: (double newValue){
             setState(() {
               PasswordLength().passwordLength = newValue.toInt();
-              print(PasswordGenerator().generate(PasswordLength().passwordLength));
             });
             widget.onSliderChanged();
           },
