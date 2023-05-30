@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:passlum/enums/password_type.dart';
+import 'package:passlum/models/password_lenght.dart';
 import 'package:passlum/models/password_settings.dart';
 
 class PasswordGenerator {
@@ -10,12 +11,21 @@ class PasswordGenerator {
     return _instance;
   }
 
-  PasswordGenerator._();
+  PasswordGenerator._(){
+    _password = generate(PasswordLength().passwordLength);
+  }
 
   final String _smallLetters = "abcdefghijklmnopqrstuvwxyz";
   final String _capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   final String _numbers = "0123456789";
   final String _symbols = "!@#\$%^&*()_-+=/?";
+
+  late String _password;
+  String get password {
+    _password = generate(PasswordLength().passwordLength);
+    return _password;
+  }
+
 
   String _generateEasyToSayPassword(int lenght){
     String password = "";
