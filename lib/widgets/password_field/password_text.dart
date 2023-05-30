@@ -19,11 +19,14 @@ class _PasswordTextState extends State<PasswordText> {
   Widget build(BuildContext context) {
     return Expanded(
       flex: widget.flex,
-      child: Text(
-        widget.text,
-        style: const TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.w600
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Text(
+          widget.text,
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600
+          ),
         ),
       ),
     );
