@@ -7,6 +7,7 @@ class PasswordBloc extends Bloc<PasswordChangeEvent, String>{
   }
 
   _onPasswordChange(PasswordChangeEvent event, Emitter<String> emit){
+    PasswordGenerator().generate();
     emit(PasswordGenerator().password);
   }
 }

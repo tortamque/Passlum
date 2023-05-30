@@ -12,7 +12,7 @@ class PasswordGenerator {
   }
 
   PasswordGenerator._(){
-    _password = generate(PasswordLength().passwordLength);
+    _password = generate();
   }
 
   final String _smallLetters = "abcdefghijklmnopqrstuvwxyz";
@@ -21,10 +21,7 @@ class PasswordGenerator {
   final String _symbols = "!@#\$%^&*()_-+=/?";
 
   late String _password;
-  String get password {
-    _password = generate(PasswordLength().passwordLength);
-    return _password;
-  }
+  String get password => _password;
 
 
   String _generateEasyToSayPassword(int lenght){
@@ -78,14 +75,19 @@ class PasswordGenerator {
     return password;
   } 
 
-  String generate(int lenght){
+  String generate(){
+    int lenght = PasswordLength().passwordLength;
+
     switch (PasswordSettings().type) {
       case PasswordType.easyToSay:
-        return _generateEasyToSayPassword(lenght);
+        _password = _generateEasyToSayPassword(lenght);
+        return _password;
       case PasswordType.easyToRead:
-        return _generateEasyToReadPassword(lenght);
+        _password =  _generateEasyToReadPassword(lenght);
+        return _password;
       case PasswordType.allCharacters:
-        return _generateAllCharactersPassword(lenght);
+        _password =  _generateAllCharactersPassword(lenght);
+        return _password;
     }
   }
 }
