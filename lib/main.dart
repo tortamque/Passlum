@@ -40,8 +40,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _password = "password";
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -61,9 +59,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             const Filler(flex: 1),
 
-            PasswordField(
-              password: _password
-            ),
+            PasswordField(),
 
             const Filler(flex: 1),
 

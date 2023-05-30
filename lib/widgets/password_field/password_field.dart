@@ -5,10 +5,7 @@ import 'package:passlum/widgets/password_field/password_text.dart';
 import 'package:passlum/widgets/password_field/strength_line.dart';
 
 class PasswordField extends StatefulWidget {
-  final String password;
-
   const PasswordField({
-    required this.password,
     super.key
   });
 
