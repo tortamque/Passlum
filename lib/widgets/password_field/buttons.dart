@@ -22,16 +22,49 @@ class CopyButton extends StatelessWidget {
   }
 }
 
-class RegenerateButton extends StatelessWidget {
-  const RegenerateButton({super.key});
+class RegenerateButton extends StatefulWidget {
+  const RegenerateButton({Key? key}) : super(key: key);
+
+  @override
+  _RegenerateButtonState createState() => _RegenerateButtonState();
+}
+
+class _RegenerateButtonState extends State<RegenerateButton> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOut, 
+    );
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: (){
-        BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
-      }, 
-      icon: Image.asset("assets/icons/Reload.png")
+    return RotationTransition(
+      turns: _animation,
+      child: IconButton(
+        onPressed: () {
+          _controller.reset();
+          _controller.forward();
+          BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
+        },
+        icon: Image.asset("assets/icons/Reload.png"),
+      ),
     );
   }
 }
