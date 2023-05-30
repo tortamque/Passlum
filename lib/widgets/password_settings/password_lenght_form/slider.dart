@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passlum/business_logic/password_bloc.dart';
 import 'package:passlum/models/password_lenght.dart';
 import 'package:passlum/theme/constants.dart';
 
@@ -38,6 +40,7 @@ class _PasswordLenghtSliderState extends State<PasswordLenghtSlider> {
               PasswordLength().passwordLength = newValue.toInt();
             });
             widget.onSliderChanged();
+            BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
           },
         ),
       ),

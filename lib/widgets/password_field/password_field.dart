@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passlum/business_logic/password_bloc.dart';
 import 'package:passlum/widgets/password_field/password_text.dart';
 import 'package:passlum/widgets/password_field/strength_line.dart';
 
@@ -37,9 +39,13 @@ class _PasswordFieldState extends State<PasswordField> {
                 ),
                 child: Row(
                   children: [
-                    PasswordText(
-                      flex: 1,
-                      text: widget.password,
+                    BlocBuilder<PasswordBloc, String>(
+                      builder: (context, state){
+                        return PasswordText(
+                          flex: 1,
+                          text: state,
+                        );
+                      },
                     ),
                     IconButton(
                       onPressed: (){}, 

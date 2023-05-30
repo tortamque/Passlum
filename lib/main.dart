@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passlum/business_logic/password_bloc.dart';
 import 'package:passlum/theme/constants.dart';
 import 'package:passlum/widgets/button/button.dart';
 import 'package:passlum/widgets/fillers/filler.dart';
@@ -6,7 +8,12 @@ import 'package:passlum/widgets/password_field/password_field.dart';
 import 'package:passlum/widgets/password_settings/password_settings_form.dart';
 
 void main() {
-  runApp(const PasslumApp());
+  runApp(
+    BlocProvider<PasswordBloc>(
+      create: (context) => PasswordBloc(),
+      child: PasslumApp(),
+    )
+  );
 }
 
 class PasslumApp extends StatelessWidget {
