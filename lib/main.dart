@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passlum/business_logic/password_bloc.dart';
+import 'package:passlum/models/password_generator.dart';
 import 'package:passlum/theme/constants.dart';
 import 'package:passlum/widgets/button/button.dart';
 import 'package:passlum/widgets/fillers/filler.dart';
@@ -69,7 +71,13 @@ class _HomePageState extends State<HomePage> {
 
             Button(
               title: "Copy password",
-              onPressed: (){},
+              onPressed: (){
+                Clipboard.setData(
+                  ClipboardData(
+                    text: PasswordGenerator().password
+                  )
+                );
+              },
             ),
             
             const Filler(flex: 1),

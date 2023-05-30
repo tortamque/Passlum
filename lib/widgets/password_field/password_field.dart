@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passlum/business_logic/password_bloc.dart';
+import 'package:passlum/models/password_generator.dart';
 import 'package:passlum/widgets/password_field/password_text.dart';
 import 'package:passlum/widgets/password_field/strength_line.dart';
 
@@ -45,7 +47,13 @@ class _PasswordFieldState extends State<PasswordField> {
                       },
                     ),
                     IconButton(
-                      onPressed: (){}, 
+                      onPressed: (){
+                         Clipboard.setData(
+                          ClipboardData(
+                            text: PasswordGenerator().password
+                          )
+                         );
+                      }, 
                       icon: Image.asset("assets/icons/Copy.png")
                     ),
                     IconButton(
