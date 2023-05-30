@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passlum/business_logic/password_bloc.dart';
 import 'package:passlum/models/password_generator.dart';
 
 class CopyButton extends StatelessWidget {
@@ -26,7 +28,9 @@ class RegenerateButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: (){}, 
+      onPressed: (){
+        BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
+      }, 
       icon: Image.asset("assets/icons/Reload.png")
     );
   }
