@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passlum/business_logic/password_bloc.dart';
 import 'package:passlum/enums/password_type.dart';
 import 'package:passlum/models/password_settings.dart';
 import 'package:passlum/widgets/password_settings/password_customization_form/check_box.dart';
@@ -105,6 +107,7 @@ class _RightMenuState extends State<RightMenu> {
               setState(() {
                 checkValues(newValue!) ? PasswordSettings().isUppercase = newValue : null;
               });
+              BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
             },
             isEnabled: true,
           ),
@@ -115,6 +118,7 @@ class _RightMenuState extends State<RightMenu> {
               setState(() {
                 checkValues(newValue!) ? PasswordSettings().isLowercase = newValue : null;
               });
+              BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
             },
             isEnabled: true,
           ),
@@ -125,6 +129,7 @@ class _RightMenuState extends State<RightMenu> {
               setState(() {
                 PasswordSettings().type == PasswordType.easyToSay ? null : (checkValues(newValue!) ? PasswordSettings().isNumeric = newValue : null);
               });
+              BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
             },
             isEnabled: PasswordSettings().type == PasswordType.easyToSay ? false : true,
           ),
@@ -135,6 +140,7 @@ class _RightMenuState extends State<RightMenu> {
               setState(() {
                 PasswordSettings().type == PasswordType.easyToSay ? null : (checkValues(newValue!) ? PasswordSettings().isSymbolic = newValue : null);
               });
+              BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
             },
             isEnabled: PasswordSettings().type == PasswordType.easyToSay ? false : true,
           ),
