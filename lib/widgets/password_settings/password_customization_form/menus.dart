@@ -39,7 +39,9 @@ class _LeftMenuState extends State<LeftMenu> {
                 PasswordSettings().isLowercase = true;
 
                 widget.onTypeChanged();
-              });}, 
+              });
+              BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
+            }, 
             value: PasswordType.easyToSay
           ),
 
@@ -51,7 +53,9 @@ class _LeftMenuState extends State<LeftMenu> {
                 PasswordSettings().type = newValue!;
 
                 widget.onTypeChanged();
-              });}, 
+              });
+              BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
+            }, 
             value: PasswordType.easyToRead
           ),
           
@@ -63,7 +67,9 @@ class _LeftMenuState extends State<LeftMenu> {
                 PasswordSettings().type = newValue!;
 
                 widget.onTypeChanged();
-              });},
+              });
+              BlocProvider.of<PasswordBloc>(context).add(PasswordChangeEvent());
+            },
             value: PasswordType.allCharacters
           ),
         ],
