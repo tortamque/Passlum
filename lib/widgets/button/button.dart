@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:passlum/models/password_generator.dart';
 import 'package:passlum/theme/constants.dart';
 
 class Button extends StatelessWidget {
-  final String title;
-  final void Function() onPressed;
-
   const Button({
-    required this.title,
-    required this.onPressed,
     super.key
   });
 
@@ -21,10 +18,16 @@ class Button extends StatelessWidget {
         surfaceTintColor: Colors.white,
         elevation: 10,
       ),
-      onPressed: onPressed,
-      child: Text(
-        title, 
-        style: const TextStyle(
+      onPressed: (){
+        Clipboard.setData(
+          ClipboardData(
+            text: PasswordGenerator().password
+          )
+        );
+      },
+      child: const Text(
+        "Copy password", 
+        style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
           fontSize: 21
