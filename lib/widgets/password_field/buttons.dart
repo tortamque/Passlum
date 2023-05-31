@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:passlum/business_logic/password_bloc.dart';
 import 'package:passlum/models/password_generator.dart';
 
@@ -15,6 +16,11 @@ class CopyButton extends StatelessWidget {
           ClipboardData(
             text: PasswordGenerator().password
           )
+        );
+        showToast(
+          "Password was successfully copied",
+          position: ToastPosition.bottom,
+          radius: 10.0,
         );
       }, 
       icon: Image.asset("assets/icons/Copy.png")

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:passlum/business_logic/password_bloc.dart';
 import 'package:passlum/theme/constants.dart';
 import 'package:passlum/widgets/button/button.dart';
@@ -21,12 +22,15 @@ class PasslumApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Passlum',
-      theme: ThemeData(
-        useMaterial3: true,
+    return OKToast(
+      animationCurve: Curves.easeInOut,
+      child: MaterialApp(
+        title: 'Passlum',
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        home: const HomePage(title: 'Passlum'),
       ),
-      home: const HomePage(title: 'Passlum'),
     );
   }
 }
