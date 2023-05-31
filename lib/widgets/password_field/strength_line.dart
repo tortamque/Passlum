@@ -24,8 +24,6 @@ class _StrenghtLineState extends State<StrenghtLine> {
       child: BlocBuilder<PasswordBloc, String>(
         builder: (context, state){
           Strength passwordStrength = _checkPasswordStrength(state);
-          print("$state : $passwordStrength");
-
           return Card(
             margin: EdgeInsets.all(0),
             color: (){
@@ -65,9 +63,9 @@ Strength _checkPasswordStrength(String password) {
     }
   }
 
-  if (uppercaseCount >= 2 && numberCount >= 2 && specialCharCount >= 1) {
+  if (uppercaseCount >= 2 && numberCount >= 1 && specialCharCount >= 1) {
     return Strength.strong;
-  } else if (uppercaseCount >= 2 && numberCount >= 1) {
+  } else if ((uppercaseCount >= 2 && numberCount >= 1) || specialCharCount >= 1) {
     return Strength.medium;
   } else {
     return Strength.weak;
