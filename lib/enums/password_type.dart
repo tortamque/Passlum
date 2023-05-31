@@ -3,3 +3,9 @@ enum PasswordType{
   easyToRead,
   allCharacters
 }
+
+enum Strength{
+  weak,
+  medium,
+  strong
+}

@@ -39,6 +39,7 @@ class _PasswordFieldState extends State<PasswordField> {
                   children: [
                     BlocBuilder<PasswordBloc, String>(
                       builder: (context, state){
+                        
                         return PasswordText(
                           flex: 1,
                           text: state,

@@ -15,7 +15,7 @@ class CopyButton extends StatelessWidget {
           ClipboardData(
             text: PasswordGenerator().password
           )
-          );
+        );
       }, 
       icon: Image.asset("assets/icons/Copy.png")
     );
