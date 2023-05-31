@@ -24,22 +24,25 @@ class _StrenghtLineState extends State<StrenghtLine> {
       child: BlocBuilder<PasswordBloc, String>(
         builder: (context, state){
           Strength passwordStrength = _checkPasswordStrength(state);
-          return Card(
-            margin: EdgeInsets.all(0),
-            color: (){
-              if(passwordStrength == Strength.strong) {
-                return CustomColors.strengthLineGreen;
-              } else if (passwordStrength == Strength.medium) {
-                return CustomColors.strengthLineYellow;
-              } else {
-                return CustomColors.strengthLineRed;
-              }
-            }(),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-            ),
-            child: SizedBox(
-              width: double.infinity,
+          return AnimatedContainer(
+            duration: const Duration(milliseconds: 250), 
+            curve: Curves.easeInOut, 
+            margin: const EdgeInsets.all(0),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: () {
+                if (passwordStrength == Strength.strong) {
+                  return CustomColors.strengthLineGreen;
+                } else if (passwordStrength == Strength.medium) {
+                  return CustomColors.strengthLineYellow;
+                } else {
+                  return CustomColors.strengthLineRed;
+                }
+              }(),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
             ),
           );
         }
