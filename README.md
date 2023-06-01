@@ -44,9 +44,9 @@ To run the Passlum app locally, follow these steps:
 <a name="screenshots-and-demo"/></a>
 ## Screenshots and Demo
 ### Screenshots
-<img src="https://github.com/tortamque/Passlum/assets/90132962/ffe4f1cf-c49c-48f6-bb5c-2c663a0c7c04" alt="Screenshot_1" width="200">
-<img src="https://github.com/tortamque/Passlum/assets/90132962/4ae9a29a-1d3c-4a2e-8e8f-61d8006a0577" alt="Screenshot_2" width="200">
-<img src="https://github.com/tortamque/Passlum/assets/90132962/fafdd777-9a5c-4b83-b71a-c0a32b024db1" alt="Screenshot_3" width="200">
+<img src="https://github.com/tortamque/Passlum/assets/90132962/783fcdc9-29f8-4ce1-91f8-0b068e48c50c" alt="Screenshot_1" width="200">
+<img src="https://github.com/tortamque/Passlum/assets/90132962/dd4212d8-1ae6-43f4-9689-34b6b39faf95" alt="Screenshot_2" width="200">
+<img src="https://github.com/tortamque/Passlum/assets/90132962/273f7cd1-7d56-45c8-bf57-f15c45645689" alt="Screenshot_3" width="200">
 
 ### Demo
 <img src="https://i.imgur.com/B1Fs4CJ.gif" alt="Demo" width="200">
